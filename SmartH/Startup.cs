@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using SmartH.Models.Infraestructura.Core;
 
 namespace SmartH
 {
@@ -25,7 +27,14 @@ namespace SmartH
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc().AddControllersAsServices();
+            services.AddScoped<UnitOfWorkSmh>();
+            // services.AddScoped<IUnitOfWork, UnitOfWorkSmh>();
+            services.AddScoped(typeof(IRepositorioGenerico<>), typeof(RepositorioGenerico<>));
+            // services.AddScoped<IUsuarioAppService, UsuarioAppService>();
+            services.AddDbContext<DbContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,6 +1,7 @@
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using SmartH.Models.Entidades;
+using SmartH.Models.Maps.Usuarios;
 
 namespace SmartH.Models.Infraestructura.Core
 {
@@ -22,6 +23,7 @@ namespace SmartH.Models.Infraestructura.Core
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new UsuarioMap());
             // modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
             // modelBuilder.Configurations.Add(new UsuarioMap());

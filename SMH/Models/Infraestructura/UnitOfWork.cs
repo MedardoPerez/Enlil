@@ -17,7 +17,7 @@ namespace SMH.Models.Infraestructura
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfiguration(new UsuarioMap());
+            // builder.ApplyConfiguration(new UsuarioMap());
             base.OnModelCreating(builder);
         }
 

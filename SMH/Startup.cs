@@ -14,6 +14,7 @@ using Microsoft.Extensions.Options;
 using SMH.Models.Infraestructura;
 using SMH.Models.Repositorios;
 using SMH.Models.ServiciosDeAplicacion;
+using SMH.Models.ServiciosDeDominio;
 
 namespace SMH
 {
@@ -35,6 +36,7 @@ namespace SMH
                 options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped(typeof(IRepositorioGenerico<>), typeof(RepositorioGenerico<>));
             services.AddScoped<IUsuarioAppService, UsuarioAppService>();
+            services.AddScoped<IUsuarioDomainService, UsuarioDomainService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

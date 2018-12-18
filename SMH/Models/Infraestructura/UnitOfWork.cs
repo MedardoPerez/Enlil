@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using SMH.Models.Entidades.UsuarioEntidades;
+using SMH.Models.Maps;
 
 namespace SMH.Models.Infraestructura
 {
@@ -15,12 +16,12 @@ namespace SMH.Models.Infraestructura
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Usuario>().HasKey(m => m.UsuarioId);
+            // builder.Entity<Usuario>().HasKey(m => m.UsuarioId);
 
             // shadow properties
             // builder.Entity<DataEventRecord>().Property<DateTime>("UpdatedTimestamp");
             // builder.Entity<SourceInfo>().Property<DateTime>("UpdatedTimestamp");
-
+            builder.ApplyConfiguration(new UsuarioMap());
             base.OnModelCreating(builder);
         }
 

@@ -1,0 +1,14 @@
+C:\MJPO\Enlil\SMH\bin\Debug\netcoreapp2.1\SMH.deps.json
+C:\MJPO\Enlil\SMH\bin\Debug\netcoreapp2.1\SMH.runtimeconfig.json
+C:\MJPO\Enlil\SMH\bin\Debug\netcoreapp2.1\SMH.runtimeconfig.dev.json
+C:\MJPO\Enlil\SMH\bin\Debug\netcoreapp2.1\SMH.dll
+C:\MJPO\Enlil\SMH\bin\Debug\netcoreapp2.1\SMH.pdb
+C:\MJPO\Enlil\SMH\obj\Debug\netcoreapp2.1\SMH.csprojAssemblyReference.cache
+C:\MJPO\Enlil\SMH\obj\Debug\netcoreapp2.1\SMH.csproj.CoreCompileInputs.cache
+C:\MJPO\Enlil\SMH\obj\Debug\netcoreapp2.1\SMH.RazorAssemblyInfo.cache
+C:\MJPO\Enlil\SMH\obj\Debug\netcoreapp2.1\SMH.RazorAssemblyInfo.cs
+C:\MJPO\Enlil\SMH\obj\Debug\netcoreapp2.1\SMH.AssemblyInfoInputs.cache
+C:\MJPO\Enlil\SMH\obj\Debug\netcoreapp2.1\SMH.AssemblyInfo.cs
+C:\MJPO\Enlil\SMH\obj\Debug\netcoreapp2.1\SMH.RazorTargetAssemblyInfo.cache
+C:\MJPO\Enlil\SMH\obj\Debug\netcoreapp2.1\SMH.dll
+C:\MJPO\Enlil\SMH\obj\Debug\netcoreapp2.1\SMH.pdb

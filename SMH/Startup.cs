@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using SMH.Models.Infraestructura;
 using SMH.Models.Repositorios;
+using SMH.Models.ServiciosDeAplicacion;
 
 namespace SMH
 {
@@ -33,6 +34,7 @@ namespace SMH
             services.AddDbContext<DbContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped(typeof(IRepositorioGenerico<>), typeof(RepositorioGenerico<>));
+            services.AddScoped<IUsuarioAppService, UsuarioAppService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

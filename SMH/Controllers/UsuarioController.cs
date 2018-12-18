@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SMH.Models.Entidades.UsuarioEntidades;
-using SMH.Models.Infraestructura;
+using SMH.Models.DTOs.UsuarioDTOs;
 using SMH.Models.Repositorios;
+using SMH.Models.ServiciosDeAplicacion;
 
 namespace SMH.Controllers
 {
@@ -14,18 +14,18 @@ namespace SMH.Controllers
     public class UsuarioController : ControllerBase
     {
 
-        private readonly IRepositorioGenerico<Usuario> _usuarioRepositorio;
-        public UsuarioController(IRepositorioGenerico<Usuario> usuarioRepositorio)
+        private readonly IUsuarioAppService _usuarioAppService;
+        public UsuarioController(IUsuarioAppService usuarioAppService)
         {
-           if(usuarioRepositorio == null) throw new ArgumentNullException(nameof(usuarioRepositorio));
+           if(usuarioAppService == null) throw new ArgumentNullException(nameof(usuarioAppService));
 
-           _usuarioRepositorio = usuarioRepositorio;
+            _usuarioAppService = usuarioAppService;
         }
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<Usuario>> Get()
+        public ActionResult<IEnumerable<UsuarioDTO>> Get()
         {
-            return _usuarioRepositorio.GetAll().ToList();
+            return _usuarioAppService.ObtenerUsuarios().ToList();
         }
     }
 }

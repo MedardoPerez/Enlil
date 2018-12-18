@@ -1,26 +1,22 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using SMH.Models.Entidades;
 using SMH.Models.Entidades.UsuarioEntidades;
 using SMH.Models.Maps;
 
 namespace SMH.Models.Infraestructura
 {
-    // >dotnet ef migration add testMigration
     public class UnitOfWork : DbContext
     {
         public UnitOfWork(DbContextOptions<DbContext> options) : base(options)
         { }
 
-        public DbSet<Usuario> Usuario { get; set; }
+        // public DbSet<Usuario> Usuario { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            // builder.Entity<Usuario>().HasKey(m => m.UsuarioId);
-
-            // shadow properties
-            // builder.Entity<DataEventRecord>().Property<DateTime>("UpdatedTimestamp");
-            // builder.Entity<SourceInfo>().Property<DateTime>("UpdatedTimestamp");
             builder.ApplyConfiguration(new UsuarioMap());
             base.OnModelCreating(builder);
         }
@@ -28,9 +24,6 @@ namespace SMH.Models.Infraestructura
         public override int SaveChanges()
         {
             ChangeTracker.DetectChanges();
-
-            // updateUpdatedProperty<SourceInfo>();
-            // updateUpdatedProperty<DataEventRecord>();
 
             return base.SaveChanges();
         }
@@ -46,5 +39,33 @@ namespace SMH.Models.Infraestructura
                 entry.Property("UpdatedTimestamp").CurrentValue = DateTime.UtcNow;
             }
         }
+
+        #region Implementation of IQueryableUnitOfWork
+
+        public DbSet<TEntity> CreateSet<TEntity>() where TEntity : class
+        {
+            return Set<TEntity>();
+        }
+
+        public void Attach<TEntity>(TEntity item) where TEntity : class
+        {
+            //attach and set as unchanged
+            Entry(item).State = EntityState.Unchanged;
+        }
+
+        public IEnumerable<TEntity> ExecuteQuery<TEntity>(string sqlQuery, params object[] parameters)
+        {
+            throw new NotImplementedException();
+            // return Database.SqlQuery<TEntity>(sqlQuery, parameters);
+        }
+
+        public void Commit(TransactionInfo transactionInfo)
+        {
+            ChangeTracker.DetectChanges();
+
+             base.SaveChanges();
+        }
+
+        #endregion
     }
 }

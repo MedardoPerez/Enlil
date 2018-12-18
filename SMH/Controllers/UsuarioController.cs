@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SMH.Models.Entidades.UsuarioEntidades;
 using SMH.Models.Infraestructura;
+using SMH.Models.Repositorios;
 
 namespace SMH.Controllers
 {
@@ -10,16 +13,19 @@ namespace SMH.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        public UsuarioController(UnitOfWork context)
+
+        private readonly IRepositorioGenerico<Usuario> _usuarioRepositorio;
+        public UsuarioController(IRepositorioGenerico<Usuario> usuarioRepositorio)
         {
-            _context = context;
+           if(usuarioRepositorio == null) throw new ArgumentNullException(nameof(usuarioRepositorio));
+
+           _usuarioRepositorio = usuarioRepositorio;
         }
-        private readonly UnitOfWork _context;
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<Usuario>> Get()
         {
-            return _context.Usuario;
+            return _usuarioRepositorio.GetAll().ToList();
         }
     }
 }

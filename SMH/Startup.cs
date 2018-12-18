@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using SMH.Models.Infraestructura;
+using SMH.Models.Repositorios;
 
 namespace SMH
 {
@@ -28,10 +29,10 @@ namespace SMH
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-            services.AddScoped<UnitOfWork>();
+            services.AddScoped<UnitOfWorkSMH>();
             services.AddDbContext<DbContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
-
+            services.AddScoped(typeof(IRepositorioGenerico<>), typeof(RepositorioGenerico<>));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

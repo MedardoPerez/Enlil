@@ -11581,11 +11581,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\MJPO\\Enlil\\SMH\\SMH.csproj",
+      "projectUniqueName": "C:\\MJPO\\Enlil\\SMH\\SMH.csproj",
       "projectName": "SMH",
-      "projectPath": "c:\\MJPO\\Enlil\\SMH\\SMH.csproj",
+      "projectPath": "C:\\MJPO\\Enlil\\SMH\\SMH.csproj",
       "packagesPath": "C:\\Users\\mperez\\.nuget\\packages\\",
-      "outputPath": "c:\\MJPO\\Enlil\\SMH\\obj\\",
+      "outputPath": "C:\\MJPO\\Enlil\\SMH\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
